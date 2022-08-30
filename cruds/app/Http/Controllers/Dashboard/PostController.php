@@ -43,6 +43,8 @@ class PostController extends Controller
         echo "el titulo trae " .$request->title; 
         
         Post :: create($request->validated());
+        return back()->with('status', 'Muchas gracias, tu post fue creado con éxito :).'); // status: si hay una sesión activa
+        //return redirect('post.create')->with('status', 'Post created'); // status: si hay una sesión activa
     }
 
     /**

@@ -21,6 +21,11 @@
             @endforeach
         @endif    
         @csrf
+        @if(session('status'))<!--  si session encuentra status -->
+            <div class="alert alert-success" role="alert">
+                {{session('status')}}
+            </div>
+        @endif
         <label for="">Titulo</label>
         <input type="text" name="title" style="background-color:#CBCBCB">
         </div><label for="">Url Corta</label>
