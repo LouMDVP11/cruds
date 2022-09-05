@@ -16,8 +16,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        echo('Lourdes Del Valle');
-        //
+        //echo('Lourdes Del Valle');
+        $posts=Post::orderBy('created_at','desc')->cursorpaginate(5); //según la variable created_at de manera ascendente
+        //$posts=Post::get();
+        echo view ('Dashboard.post.index',['posts'=>$posts]); //para los arreglos, se debe apuntar con =>
     }
 
     /**

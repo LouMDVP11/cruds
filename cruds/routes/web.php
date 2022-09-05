@@ -16,7 +16,7 @@ use App\Http\Controllers\Dashboard\CategoriesController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home'); /* '->name('home'); indica que la ruta también se le puede llamar home */
 
 Route::resource('post', PostController::class);
 

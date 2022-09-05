@@ -17,6 +17,9 @@ class CategoriesController extends Controller
     public function index()
     {
         // echo "Lourdes";
+        $categories=Categories::orderBy('created_at','desc')->cursorpaginate(5); //según la variable created_at de manera ascendente
+        //$posts=Post::get();
+        echo view ('Dashboard.categories.index',['categories'=>$categories]); //para los arreglos, se debe apuntar con =>
     }
 
     /**

@@ -9,24 +9,11 @@
     <title>Categorías</title>
 </head>
 <body style="text-align: center; background-color: #0E121F;">
-    <h1 style="background-color: #69C3FF;">TAREA AL 05/09/2022</h1>
-    <h3 style="background-color:#121624; color:#CBCBCB">Lourdes del Valle - 202008019</h3>
+    @include('Dashboard.Partials.nav-header-main')
+    <h1 style="color: #FFF1FF;">INGRESO DE CATEGORÍAS</h1>
     
     <form action="{{route('categories.store')}}" method="post" style="color:#F1FFFF;">
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
-                    {{$error}}
-                </div>
-            @endforeach
-        @endif    
-        @csrf
-        <!--  si session encuentra status -->
-        @if(session('status'))
-            <div class="alert alert-success" role="alert">
-                {{session('status')}}
-            </div>
-        @endif
+        @include('Dashboard.Partials.sesion-flash-status')
         <label for="">Titulo</label>
         <input type="text" name="title" style="background-color:#CBCBCB">
         </div><label for="">Url Corta</label>
