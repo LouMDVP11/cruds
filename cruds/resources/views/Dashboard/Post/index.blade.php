@@ -11,7 +11,7 @@
 <body style="text-align: center; background-color: #0E121F;">
     @include('Dashboard.Partials.nav-header-main')
     <br>
-    <!-- <h1 style="color: #FFF1FF;">INDEX</h1> -->
+    @csrf    <!-- <h1 style="color: #FFF1FF;">INDEX</h1> -->
     <a class="btn btn-primary" href="{{route('post.create')}}">Crear</a>
     <div class="container">
         <table class="table table-striped"  style="color:#FFFFFF;">
@@ -50,6 +50,17 @@
                         </td>
                         <td>
                             {{$post->updated_at->format('d-m-Y')}}
+                        </td>
+                        <td>
+                            <a href="{{route('post.show', $post->id)}}" class="btn btn-primary">Ver</a>
+                            <a href="{{route('post.edit', $post->id)}}" class="btn btn-success">Editar</a>
+                            <form method="POST" action="{{route('post.destroy',$post->id)}}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger" type="submit">
+                                    Borrar
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

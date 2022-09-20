@@ -17,9 +17,9 @@ class PostController extends Controller
     public function index()
     {
         //echo('Lourdes Del Valle');
-        $posts=Post::orderBy('created_at','desc')->cursorpaginate(5); //según la variable created_at de manera ascendente
+        $post=Post::orderBy('created_at','desc')->cursorpaginate(5); //según la variable created_at de manera ascendente
         //$posts=Post::get();
-        echo view ('Dashboard.post.index',['posts'=>$posts]); //para los arreglos, se debe apuntar con =>
+        echo view ('Dashboard.post.index',["posts"=>$post]); //para los arreglos, se debe apuntar con =>
     }
 
     /**
@@ -29,8 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-
-        echo view ('dashboard.post.create');
+        echo view ('dashboard.post.create',["posts"=>new post()]);
         //
     }
 
@@ -57,7 +56,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        //echo "Hola mundo";
+        echo view ('Dashboard.Post.show', ["post"=>$post]);
     }
 
     /**
@@ -68,7 +68,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        echo view ('Dashboard.Post.edit', ["post"=>$post]);
     }
 
     /**
@@ -78,9 +78,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePostPost $request, Post $post)
     {
         //
+        $post->update($request->validated());
+        return back()->with('status', 'Muchas gracias, tu post fue actualizado con éxito :).');
     }
 
     /**
@@ -92,5 +94,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $post->delete();
+        return back()->with('status', 'Post borrado con éxito');
+        //echo "Hola?";
     }
 }

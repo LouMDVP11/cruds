@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Categorías</title>
+    <title>Posts</title>
 </head>
 <body style="text-align: center; background-color: #0E121F;">
     @include('Dashboard.Partials.nav-header-main')
-    <h1 style="color: #FFF1FF;">INGRESO DE CATEGORÍAS</h1>
+    <h1 style="color: #FFF1FF;">INGRESO DE POSTS</h1>
     
-    <form action="{{route('categories.store')}}" method="post" style="color:#F1FFFF;">
-        @include('Dashboard.Partials._formcat')
+    <form action="{{route('post.update', $post->id)}}" method="post" style="color:#F1FFFF;">
+        <!-- cambio de método de post a put para sequelize -->
+        @method('PUT')
+        @include('Dashboard.Partials._form')
     </form>
 </body>
 

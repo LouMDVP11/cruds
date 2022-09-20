@@ -12,7 +12,8 @@
     @include('Dashboard.Partials.nav-header-main')
     <h1 style="color: #FFF1FF;">INGRESO DE CATEGORÍAS</h1>
     
-    <form action="{{route('categories.store')}}" method="post" style="color:#F1FFFF;">
+    <form action="{{route('categories.update', $category->id)}}" method="post" style="color:#F1FFFF;">
+        @method('PUT')
         @include('Dashboard.Partials._formcat')
     </form>
 </body>

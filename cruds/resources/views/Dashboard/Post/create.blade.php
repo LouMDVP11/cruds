@@ -13,18 +13,7 @@
     <h1 style="color: #FFF1FF;">INGRESO DE POSTS</h1>
     
     <form action="{{route('post.store')}}" method="post" style="color:#F1FFFF;">
-        @include('Dashboard.Partials.sesion-flash-status')
-        <label for="">Titulo</label>
-        <input type="text" name="title" style="background-color:#CBCBCB">
-        </div><label for="">Url Corta</label>
-        <input type="text" name="slug" style="background-color:#CBCBCB">
-        <br><br>
-        <label for="">Contenido</label>
-        <textarea name="content" id="" cols="30" rows="10" style="background-color:#CBCBCB"></textarea>
-        <label for="">Descripcion</label>
-        <textarea name="description" id="" cols="30" rows="10" style="background-color:#CBCBCB"></textarea>
-        <br><br>
-        <button class="btn" type="submit">Enviar</button>
+        @include('Dashboard.Partials._form')
     </form>
 </body>
 
